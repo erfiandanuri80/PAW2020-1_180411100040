@@ -1,0 +1,24 @@
+.container {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  padding: 20px 20px;
+  margin: 10px;
+  background-color: #aaff99;
+}
+
+.submit {
+  background-color: steelblue;
+}
+.reset {
+  background-color: tomato;
+}
+
+.footer .container {
+  font-size: 20px;
+  background-color: #279182;
+}
+
+.error {
+  color: #ff0000;
+}
