@@ -70,10 +70,8 @@ function lolosEmail($nilai)
 
 function lolosAlphabet($nilai)
 {
-    preg_match("/^[a-zA-Z-' ]*$/", $nilai, $output);
-
-    if (count($output)) {
-        return $output[0] === $nilai;
+    if (ctype_alpha($nilai)) {
+        return true;
     }
 
     return false;
@@ -84,11 +82,9 @@ function lolosNumeric($nilai)
 }
 function lolosAlphanumeric($nilai)
 {
-    preg_match("/^(?=.*[0-9])(?=.*[A-Z]).{8,20}$/", $nilai, $output);
-    if (count($output)) {
-        return $output[0] === $nilai;
+    if (ctype_alnum($nilai)) {
+        return true;
     }
-
     return false;
 }
 function lolosLengthNumber($nilai)
