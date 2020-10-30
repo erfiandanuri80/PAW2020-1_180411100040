@@ -9,6 +9,8 @@
 
 <body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
 
+    <?php
+    require_once "calenderku.php" ?>
     <table style="margin: auto;">
         <tr>
             <th colspan="3" style="padding:50px; font-size:24px;">KALENDER TAHUN 2020</th>
@@ -57,49 +59,8 @@
                 <table><?php monthCalender(12); ?></table>
             </td>
         </tr>
+    </table>
 
-        <?php
-        function monthCalender($num)
-        {
-            $hari    = date("d");
-            $bulan    = date($num);
-            $tahun    = date("Y");
-            $jumlahhari = date("t", mktime(0, 0, 0, $bulan, $hari, $tahun));
-
-
-            echo "<tr>" . "<th colspan='7'>";
-            echo date('F', strtotime("2020-$bulan"));
-            echo "</th>";
-            echo "</tr>";
-            echo "<tr style='background-color: aqua';>";
-            echo "<td style='text-align: center; color: red;'>Minggu</td>";
-            echo "<td style='text-align: center;''>Senin</td>";
-            echo "<td style='text-align: center;''>Selasa</td>";
-            echo "<td style='text-align: center;''>Rabu</td>";
-            echo "<td style='text-align: center;''>Kamis</td>";
-            echo "<td style='text-align: center;''>Jumat</td>";
-            echo "<td style='text-align: center;''>Sabtu</td>";
-            echo "</tr>";
-
-            $s = date("w", mktime(0, 0, 0, $bulan, 1, $tahun));
-            for ($ds = 1; $ds <= $s; $ds++) {
-                echo "<td></td>";
-            }
-            for ($d = 1; $d <= $jumlahhari; $d++) {
-                if (date("w", mktime(0, 0, 0, $bulan, $d, $tahun)) == 0) {
-                    echo "<tr>";
-                }
-                $warna = "#000000"; // warna default
-                if (date("l", mktime(0, 0, 0, $bulan, $d, $tahun)) == "Sunday") {
-                    $warna = "#FF0000";
-                }
-                echo "<td align=center valign=middle> <span style=\"color:$warna\">$d</span></td>";
-                if (date("w", mktime(0, 0, 0, $bulan, $d, $tahun)) == 6) {
-                    echo "</tr>";
-                }
-            }
-        }
-        ?>
 
 </body>
 

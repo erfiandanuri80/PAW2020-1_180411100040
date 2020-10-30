@@ -17,7 +17,7 @@ $errors = (object) @$_GET['errors'];
     <div class="container">
         <h2>REGISTRASI FORM</h2>
         <a href="http://localhost/kuliahpaw/TM/PAW2020-1_180411100040_TM2/form.php">reload</a>
-        <form action="proses.php" method="GET">
+        <form action="validasi.php" method="GET">
             Surname
             <br>
             <input type="text" name="surname" value="<?php echo @$old->surname ?>">

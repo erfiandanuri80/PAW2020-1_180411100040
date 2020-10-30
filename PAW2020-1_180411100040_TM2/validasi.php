@@ -1,11 +1,32 @@
 <?php
 
-require_once 'error-messages.php';
+$listPesanError = [
+    'required' => function ($field) {
+        return "Field harus diisi.";
+    },
+    'email' => function ($field) {
+        return "Field harus berupa email yang valid.";
+    },
+    'numeric' => function ($field) {
+        return "Field harus berupa angka numerik.";
+    },
+    'alphabet' => function ($field) {
+        return "Field harus berupa karakter alphabet.";
+    },
+    'aphanumeric' => function ($field) {
+        return "Field harus disertai Uppercase, karakter, dan nomer";
+    },
+    'lengthNumber' => function ($field) {
+        return "Field Harus diisi dengan nomor telepon yang valid";
+    },
+    'lengthPass' => function ($field) {
+        return "Field Harus diisi dengan minimal 8 karakter";
+    },
+    'similarity' => function ($field) {
+        return "Field Inputan tidak cocok ";
+    }
 
-if (isset($_POST['submit'])) {
-    $password = $_POST['password'];
-    echo "Password= $password";
-}
+];
 
 function validasi(array $listInput)
 {
@@ -87,9 +108,31 @@ function lolosLengthPass($nilai)
 
 function lolosSimilarity($nilai)
 {
-    global $password;
-    if ($nilai == $password) {
-        return true;
-    }
-    return false;
+
+    return true;
 }
+
+
+$peraturan = [
+    'surname' => ['required', 'alphabet'],
+    'email' => ['required', 'email'],
+    'mobileNumber' => ['required', 'numeric', 'lengthNumber'],
+    'password' => ['required', 'lengthPass'],
+    'c_password' => ['required', 'similarity']
+];
+
+
+$errors = validasi($peraturan);
+
+if (count($errors) > 0) {
+    $old = $_REQUEST;
+    $queryString = http_build_query([
+        'errors' => $errors,
+        'old' => $old
+    ]);
+
+    header("Location: form.php?{$queryString}");
+    die();
+}
+
+include "success.php";
