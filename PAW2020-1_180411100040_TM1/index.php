@@ -5,62 +5,52 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TUGAS MINGGUAN 1</title>
+    <!--link css -->
+    <style>
+        .container {
+            font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px 20px;
+            margin: 10px;
+        }
+
+        .footer .container {
+            font-size: 20px;
+            background-color: #279182;
+        }
+    </style>
 </head>
 
-<body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
+<body>
+    <div class="container">
+        <h1>KALENDER 2020</h1>
 
-    <?php
-    require_once "calenderku.php" ?>
-    <table style="margin: auto;">
-        <tr>
-            <th colspan="3" style="padding:50px; font-size:24px;">KALENDER TAHUN 2020</th>
-        </tr>
-        <tr>
-            <td>
-                <table><?php monthCalender(1); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(2); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(3); ?></table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table><?php monthCalender(4); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(5); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(6); ?></table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table><?php monthCalender(7); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(8); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(9); ?></table>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <table><?php monthCalender(10); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(11); ?></table>
-            </td>
-            <td>
-                <table><?php monthCalender(12); ?></table>
-            </td>
-        </tr>
-    </table>
+    </div>
+    <div class="container">
+        <?php
+        require_once "calender.php";
+        monthCalender("1");
+        monthCalender("2");
+        monthCalender("3");
+        monthCalender("4");
+        monthCalender("5");
+        monthCalender("6");
+        monthCalender("7");
+        monthCalender("8");
+        monthCalender("9");
+        monthCalender("10");
+        monthCalender("11");
+        monthCalender("12");
 
+        ?>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            @ 180411100040 - RIO ERFIAN
+        </div>
+    </div>
 
 </body>
 

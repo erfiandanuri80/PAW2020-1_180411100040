@@ -41,11 +41,11 @@ function validasi(array $listInput)
     foreach ($listInput as $input => $listPeraturan) {
         # perulangan untuk sub array (berisi nama peraturan)
         foreach ($listPeraturan as $peraturan) {
-            $namaFungsi = 'lolos' . ucfirst($peraturan);
-            $lolos = $namaFungsi(@$request[$input]);
+            $namaFungsi = 'valid' . ucfirst($peraturan);
+            $valid = $namaFungsi(@$request[$input]);
 
-            # jika tidak lolos
-            if (!$lolos) {
+            # jika tidak valid
+            if (!$valid) {
                 if (!is_array(@$errors[$input])) {
                     $errors += [$input => []];
                 }
@@ -58,17 +58,17 @@ function validasi(array $listInput)
     return $errors;
 }
 
-function lolosRequired($nilai)
+function validRequired($nilai)
 {
     return (bool) @$nilai;
 }
 
-function lolosEmail($nilai)
+function validEmail($nilai)
 {
     return filter_var($nilai, FILTER_VALIDATE_EMAIL);
 }
 
-function lolosAlphabet($nilai)
+function validAlphabet($nilai)
 {
     if (ctype_alpha($nilai)) {
         return true;
@@ -76,25 +76,25 @@ function lolosAlphabet($nilai)
 
     return false;
 }
-function lolosNumeric($nilai)
+function validNumeric($nilai)
 {
     return is_numeric($nilai);
 }
-function lolosAlphanumeric($nilai)
+function validAlphanumeric($nilai)
 {
     if (ctype_alnum($nilai)) {
         return true;
     }
     return false;
 }
-function lolosLengthNumber($nilai)
+function validLengthNumber($nilai)
 {
     if (strlen($nilai) > 10 and strlen($nilai) < 13) {
         return true;
     }
     return false;
 }
-function lolosLengthPass($nilai)
+function validLengthPass($nilai)
 {
     if (strlen($nilai) > 7) {
         return true;
@@ -102,10 +102,12 @@ function lolosLengthPass($nilai)
     return false;
 }
 
-function lolosSimilarity($nilai)
+function validSimilarity($nilai)
 {
-
-    return true;
+    if (($_POST['password'] == $nilai)) {
+        return true;
+    }
+    return false;
 }
 
 
@@ -127,7 +129,7 @@ if (count($errors) > 0) {
         'old' => $old
     ]);
 
-    header("Location: form.php?{$queryString}");
+    header("Location: index.php?{$queryString}");
     die();
 }
 
